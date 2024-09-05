@@ -32,9 +32,9 @@ const replaceTemplate = require('./modules/replaceTemplate');
 // console. log("Will read file");
 
 /////////////////////////
-//// SERVER
+// SERVER
 
-//Read files
+// Read files
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   'utf-8'
