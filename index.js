@@ -1,11 +1,13 @@
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
-const url = require('url');
+// In-built modules
+const fs = require('fs'); //fie operatons
+const http = require('http'); // create http server
+const path = require('path'); // handle & transform file paths
+const url = require('url'); // parse & mangage urls
 
-const slugify = require('slugify');
+// third-party modules
+const slugify = require('slugify'); // strings into userFriendly strings
 
-const replaceTemplate = require('./modules/replaceTemplate');
+const replaceTemplate = require('./modules/replaceTemplate'); //own-module
 
 ////////////////////////
 // FILES
@@ -60,8 +62,8 @@ const server = http.createServer((req, res) => {
   if (pathname === '/' || pathname === '/overview') {
     res.writeHead(200, { 'Content-type': 'text/html' }); // write http response header and status code
     const cardsHtml = dataObj
-      .map((el) => replaceTemplate(tempCard, el))
-      .join(''); // replace tempCard with acutal procutName
+      .map((el) => replaceTemplate(tempCard, el)) // replace tempCard with acutal procutName
+      .join(''); // joining the array into a single HTML string
     const output = tempOverview.replace('{%PRODUCT_CARDS %}', cardsHtml);
     res.end(output); // send html content and end the response
 
@@ -81,7 +83,7 @@ const server = http.createServer((req, res) => {
   } else {
     res.writeHead(404, {
       'Content-type': 'text/html',
-      'my-own-header': 'hello-world',
+      'my-own-header': 'hello-world', // custom-header
     });
     res.end('<h1>Page Not Found !</h1>');
   }
